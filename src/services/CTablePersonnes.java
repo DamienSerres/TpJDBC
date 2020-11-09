@@ -6,6 +6,7 @@
 package services;
 
 import BDD.CBDD;
+import BDD.CParametresStockageBDD;
 import entites.CPersonne;
 
 /**
@@ -30,5 +31,15 @@ public class CTablePersonnes {
             System.out.println("Connexion KO");
         }
         return res;
+    }
+
+    public static void main(String[] args) {
+        CTablePersonnes table = new CTablePersonnes();
+        table.bdd = new CBDD(new CParametresStockageBDD("parametresBdd.properties"));
+        
+        CPersonne unePersonne = new CPersonne();
+        unePersonne.setNom("");
+        unePersonne.setPrenom("");
+    
     }
 }
