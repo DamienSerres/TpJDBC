@@ -17,6 +17,9 @@ public class CTablePersonnes {
     CBDD bdd;
     
     public void insererPersonne(CPersonne personne){
-    String requete = "INSERT INTO `coordonnées` (`Nom`, `Prénom`) VALUES ('"+ personne.getNom() +"', '')";
+    String requete = "INSERT INTO `coordonnées` (`Nom`, `Prénom`) "
+            + "VALUES ('"
+            + personne.getNom() +"', '"
+            + personne.getPrenom() +"')";
     }
 }
