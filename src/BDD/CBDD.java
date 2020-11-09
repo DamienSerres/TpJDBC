@@ -58,7 +58,21 @@ public class CBDD {
         }
     }
 
-   public static boolean testerConnexion(String nomFichierProperties) {
+    public ResultSet executerRequeteQuery(String requete) {
+        try {
+            stmt = conn.createStatement();
+            return stmt.executeQuery(requete);
+        } catch (SQLException ex) {
+            Logger.getLogger(CBDD.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+
+    public static String pretraiterChaineSQL(String s) {
+        return s.trim().replace("'", "''");
+    }
+
+    public static boolean testerConnexion(String nomFichierProperties) {
         CBDD bdd = new CBDD(new CParametresStockageBDD(nomFichierProperties));
         if (bdd.connecter() == true) {
 
@@ -70,21 +84,6 @@ public class CBDD {
         }
     }
 
-    public ResultSet executerRequeteQuery(String requete) {
-        try {
-            stmt = conn.createStatement();
-            return stmt.executeQuery(requete);
-        } catch (SQLException ex) {
-            Logger.getLogger(CBDD.class.getName()).log(Level.SEVERE, null, ex);
-            return null;
-        }
-    }
-
-    public static String pretraiterChaineSQL(String s)
-    {
-        return s.trim().replace("'", "''");
-    }
-    
     public static void main(String[] args) {
 
         // Programme de test de connexion/déconnexion à la BDD

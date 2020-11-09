@@ -16,16 +16,16 @@ public final class CParametresStockageBDD {
     protected String motDePasse;
     protected boolean parametreBDDOK = false;
 
+    public CParametresStockageBDD(String fichierProperties) {
+        chargerFichierProperties(fichierProperties);
+    }
+
     public String getProtocole() {
         return protocole;
     }
 
     public void setProtocole(String protocole) {
         this.protocole = protocole;
-    }
-
-    public CParametresStockageBDD(String fichierProperties) {
-        chargerFichierProperties(fichierProperties);
     }
 
     public String getMotDePasse() {
@@ -85,7 +85,7 @@ public final class CParametresStockageBDD {
     }
 
     public void chargerFichierProperties(String fichierProperties) {
-        try (InputStream in = new FileInputStream(fichierProperties)) {
+        try ( InputStream in = new FileInputStream(fichierProperties)) {
             Properties prop = new Properties();
             prop.load(in);
             this.ip = prop.getProperty("ip");
