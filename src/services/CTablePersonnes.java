@@ -15,11 +15,20 @@ import entites.CPersonne;
 public class CTablePersonnes {
 
     CBDD bdd;
-    
-    public void insererPersonne(CPersonne personne){
-    String requete = "INSERT INTO `coordonnées` (`Nom`, `Prénom`) "
-            + "VALUES ('"
-            + personne.getNom() +"', '"
-            + personne.getPrenom() +"')";
+
+    public int insererPersonne(CPersonne personne) {
+        int res = -1;
+        if (bdd.connecter()) {
+            String requete = "INSERT INTO `coordonnées` (`Nom`, `Prénom`) "
+                    + "VALUES ('"
+                    + personne.getNom() + "', '"
+                    + personne.getPrenom() + "')";
+
+            res = bdd.executerRequeteUpdate(requete);
+            bdd.deconnecter();
+        } else {
+            System.out.println("Connexion KO");
+        }
+        return res;
     }
 }
