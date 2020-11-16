@@ -14,7 +14,13 @@ public class CPersonne {
     private int id;
     private String nom;
     private String prenom;
-
+    
+    
+    @Override
+    public String toString(){
+    return "id : "+id+"\nnom : "+nom+"\nprenom : "+prenom;
+    }
+    
     public int getId() {
         return id;
     }

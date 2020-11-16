@@ -8,12 +8,34 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+
+/**
+ * Classe permettant la connexion à une base de données et l'envoi de requêtes
+ * sous forme de chaines de caractères.
+ * @author FGlrt/Damien
+ */
 public class CBDD {
-
+    /**
+     * Pour simplifier le processus, un attribut est prévu pour enregistrer les
+     * informations de connexion à la base de données.
+     */
     protected CParametresStockageBDD parametresStockageBDD = null;
+    /**
+     * La connexion est établie sous forme d'objet dans le formalise jdbc, on 
+     * utilise un attribut pour la stocker une fois créée.
+     */
     Connection conn = null;
+    /**
+     * Les requêtes sont envoyées à partir d'une chaine de caractères passée à 
+     * un objet statement créé à partir de l'objet "connection". Là aussi, un 
+     * attribut pour stocker.
+     */
     Statement stmt = null;
-
+/**
+ * Constructeur redéfini pour demander dès la création les paramètres de connexion
+ * à la BDD.
+ * @param parametresStockageBDD 
+ */
     public CBDD(CParametresStockageBDD parametresStockageBDD) {
         this.parametresStockageBDD = parametresStockageBDD;
         try {
