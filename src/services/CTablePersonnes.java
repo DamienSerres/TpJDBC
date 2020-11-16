@@ -93,12 +93,14 @@ public class CTablePersonnes {
         return null;
     }
 
-    public int modifierPersonne(?????){
-    int res = -1;
+    public int modifierPersonne(CPersonne personne) {
+        int res = -1;
         if (bdd.connecter()) {
-            String requete = "";
-
-            bdd.executerRequeteUpdate(requete);
+            String requete = "UPDATE `coordonnees` SET "
+                    + "`Nom` = '" + personne.getNom() + "', "
+                    + "`Prenom` = '" + personne.getPrenom() + "'"
+                    + " WHERE `coordonnees`.`id` =" + personne.getId();
+            res = bdd.executerRequeteUpdate(requete);
             bdd.deconnecter();
         } else {
             System.out.println("Connexion KO");
@@ -116,7 +118,8 @@ public class CTablePersonnes {
 //
 //        table.insererPersonne(unePersonne);
 //        System.out.println(table.lirePersonne(3));
-        System.out.println(table.lirePersonnes());
+//        System.out.println(table.lirePersonnes());
+        table.modifierPersonne(new CPersonne(1, "Serres", "Damien"));
 
     }
 }
