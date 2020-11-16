@@ -18,8 +18,17 @@ public class CPersonne {
     
     @Override
     public String toString(){
-    return "id : "+id+"\nnom : "+nom+"\nprenom : "+prenom;
+    return "\nid : "+id+"\nnom : "+nom+"\nprenom : "+prenom;
     }
+
+    public CPersonne(int id, String nom, String prenom) {
+        this.id = id;
+        this.nom = nom;
+        this.prenom = prenom;
+    }
+
+//    public CPersonne() {
+//    }
     
     public int getId() {
         return id;

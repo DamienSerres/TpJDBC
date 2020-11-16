@@ -10,6 +10,7 @@ import BDD.CParametresStockageBDD;
 import entites.CPersonne;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -45,11 +46,12 @@ public class CTablePersonnes {
             ResultSet rs = bdd.executerRequeteQuery(requete);
             try {
                 if (rs.next()) {
-                    CPersonne personne = new CPersonne();
-                    personne.setId(rs.getInt("id"));
-                    personne.setNom(rs.getString("Nom"));
-                    personne.setPrenom(rs.getString("Prenom"));
-                    return personne;
+//                    CPersonne personne = new CPersonne();
+//                    personne.setId(rs.getInt("id"));
+//                    personne.setNom(rs.getString("Nom"));
+//                    personne.setPrenom(rs.getString("Prenom"));
+                    return new CPersonne(rs.getInt("id"), rs.getString("Nom"),
+                            rs.getString("Prenom"));
                 } else {
                     System.err.println("C'est vide.");
                     JOptionPane.showMessageDialog(null, "C'est Vide.");
@@ -62,6 +64,48 @@ public class CTablePersonnes {
         return null;
     }
 
+    public ArrayList<CPersonne> lirePersonnes() {
+        ArrayList<CPersonne> collecPersonnes = new ArrayList();
+        if (bdd.connecter()) {
+            String requete = "Select * from coordonnees";
+            ResultSet rs = bdd.executerRequeteQuery(requete);
+            try {
+                while (rs.next()) {
+                    collecPersonnes.add(
+                            new CPersonne(
+                                    rs.getInt("id"),
+                                    rs.getString("Nom"),
+                                    rs.getString("Prenom")
+                            )
+                    );
+                }
+                if (collecPersonnes.isEmpty()) {
+                    System.err.println("C'est vide.");
+                    JOptionPane.showMessageDialog(null, "C'est Vide.");
+                }
+                return collecPersonnes;
+
+            } catch (SQLException ex) {
+                Logger.getLogger(CTablePersonnes.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            bdd.deconnecter();
+        }
+        return null;
+    }
+
+    public int modifierPersonne(?????){
+    int res = -1;
+        if (bdd.connecter()) {
+            String requete = "";
+
+            bdd.executerRequeteUpdate(requete);
+            bdd.deconnecter();
+        } else {
+            System.out.println("Connexion KO");
+        }
+        return res;
+    }
+
     public static void main(String[] args) {
         CTablePersonnes table = new CTablePersonnes();
         table.bdd = new CBDD(new CParametresStockageBDD("parametresBdd.properties"));
@@ -71,7 +115,8 @@ public class CTablePersonnes {
 //        unePersonne.setPrenom("Victor");
 //
 //        table.insererPersonne(unePersonne);
-        System.out.println(table.lirePersonne(3));
+//        System.out.println(table.lirePersonne(3));
+        System.out.println(table.lirePersonnes());
 
     }
 }
