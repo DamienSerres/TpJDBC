@@ -108,6 +108,18 @@ public class CTablePersonnes {
         return res;
     }
 
+    public int supprimerPersonne(CPersonne personne) {
+        int res = -1;
+        if (bdd.connecter()) {
+            String req = "DELETE FROM `coordonnees` WHERE `id` = " + personne.getId();
+            res = bdd.executerRequeteUpdate(req);
+            bdd.deconnecter();
+        } else {
+            System.out.println("Connexion KO");
+        }
+        return res;
+    }
+
     public static void main(String[] args) {
         CTablePersonnes table = new CTablePersonnes();
         table.bdd = new CBDD(new CParametresStockageBDD("parametresBdd.properties"));
@@ -118,8 +130,11 @@ public class CTablePersonnes {
 //
 //        table.insererPersonne(unePersonne);
 //        System.out.println(table.lirePersonne(3));
-//        System.out.println(table.lirePersonnes());
-        table.modifierPersonne(new CPersonne(1, "Serres", "Damien"));
+//        table.insererPersonne(new CPersonne(1, "JeanGuile", "JeanGuile"));
+        System.out.println(table.lirePersonnes());
+//        table.modifierPersonne(new CPersonne(1, "Serres", "Damien"));
+        table.supprimerPersonne(new CPersonne(2, "", ""));
+        System.out.println(table.lirePersonnes());
 
     }
 }

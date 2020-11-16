@@ -111,6 +111,47 @@ public class CTableLivres {
         return res;
     }
 
+    public int modifierLivre(Livre livre) {
+        int res = -1;
+        if (bdd.connecter() == true) {
+            String req = "UPDATE `livres` SET "
+                    + "`Titre` = '"
+                    + CBDD.pretraiterChaineSQL(livre.getTitre())
+                    + "', "
+                    + "`Auteur` = '"
+                    + CBDD.pretraiterChaineSQL(livre.getAuteur())
+                    + "', "
+                    + "`Ref` = '"
+                    + CBDD.pretraiterChaineSQL(livre.getRef())
+                    + "', "
+                    + "`NbrPages` = '"
+                    + CBDD.pretraiterChaineSQL(livre.getNbrePages())
+                    + "', "
+                    + "`edition` = '"
+                    + CBDD.pretraiterChaineSQL(livre.getEdition())
+                    + "', "
+                    + "`genre` = '"
+                    + CBDD.pretraiterChaineSQL(livre.getGenre())
+                    + "', "
+                    + "`anneeEdition` = '"
+                    + CBDD.pretraiterChaineSQL(livre.getAnneeEdition())
+                    + "', "
+                    + "`langue` = '"
+                    + CBDD.pretraiterChaineSQL(livre.getLangue())
+                    + "', "
+                    + "`format` = '"
+                    + CBDD.pretraiterChaineSQL(livre.getFormat())
+                    + "' WHERE `livres`.`id` = "
+                    + CBDD.pretraiterChaineSQL(livre.getId())
+                    + ";";
+            res = bdd.executerRequeteUpdate(req);
+            bdd.deconnecter();
+        } else {
+            System.out.println("Connexion KO");
+        }
+        return res;
+    }
+
     public int supprimerLivre(Livre livre) {
         int res = -1;
         if (bdd.connecter() == true) {
@@ -161,46 +202,5 @@ public class CTableLivres {
 //            System.out.println("--");
 //            livre.afficher();
 //        }
-    }
-
-    public int modifierLivre(Livre livre) {
-        int res = -1;
-        if (bdd.connecter() == true) {
-            String req = "UPDATE `livres` SET "
-                    + "`Titre` = '"
-                    + CBDD.pretraiterChaineSQL(livre.getTitre())
-                    + "', "
-                    + "`Auteur` = '"
-                    + CBDD.pretraiterChaineSQL(livre.getAuteur())
-                    + "', "
-                    + "`Ref` = '"
-                    + CBDD.pretraiterChaineSQL(livre.getRef())
-                    + "', "
-                    + "`NbrPages` = '"
-                    + CBDD.pretraiterChaineSQL(livre.getNbrePages())
-                    + "', "
-                    + "`edition` = '"
-                    + CBDD.pretraiterChaineSQL(livre.getEdition())
-                    + "', "
-                    + "`genre` = '"
-                    + CBDD.pretraiterChaineSQL(livre.getGenre())
-                    + "', "
-                    + "`anneeEdition` = '"
-                    + CBDD.pretraiterChaineSQL(livre.getAnneeEdition())
-                    + "', "
-                    + "`langue` = '"
-                    + CBDD.pretraiterChaineSQL(livre.getLangue())
-                    + "', "
-                    + "`format` = '"
-                    + CBDD.pretraiterChaineSQL(livre.getFormat())
-                    + "' WHERE `livres`.`id` = "
-                    + CBDD.pretraiterChaineSQL(livre.getId())
-                    + ";";
-            res = bdd.executerRequeteUpdate(req);
-            bdd.deconnecter();
-        } else {
-            System.out.println("Connexion KO");
-        }
-        return res;
     }
 }
