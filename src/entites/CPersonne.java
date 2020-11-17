@@ -14,8 +14,7 @@ public class CPersonne {
     private int id;
     private String nom;
     private String prenom;
-    
-    
+
     @Override
     public String toString(){
     return "\nid : "+id+"\nnom : "+nom+"\nprenom : "+prenom;

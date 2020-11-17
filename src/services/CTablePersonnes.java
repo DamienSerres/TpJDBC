@@ -127,14 +127,14 @@ public class CTablePersonnes {
 //        CPersonne unePersonne = new CPersonne();
 //        unePersonne.setNom("Franky");
 //        unePersonne.setPrenom("Victor");
-//
 //        table.insererPersonne(unePersonne);
+
 //        System.out.println(table.lirePersonne(3));
 //        table.insererPersonne(new CPersonne(1, "JeanGuile", "JeanGuile"));
-        System.out.println(table.lirePersonnes());
+//        System.out.println(table.lirePersonnes());
 //        table.modifierPersonne(new CPersonne(1, "Serres", "Damien"));
-        table.supprimerPersonne(new CPersonne(2, "", ""));
-        System.out.println(table.lirePersonnes());
+//        table.supprimerPersonne(new CPersonne(2, "", ""));
+//        System.out.println(table.lirePersonnes());
 
     }
 }
