@@ -18,12 +18,12 @@ public class CPersonnels {
     private String prenom;
     private String matricule;
 
-    protected CPersonnels(String nom, String prenom) {
+    public CPersonnels(String nom, String prenom) {
         this.nom = nom;
         this.prenom = prenom;
     }
 
-    private CPersonnels(float tauxHoraire, String nom, String prenom, String matricule) {
+    public CPersonnels(float tauxHoraire, String nom, String prenom, String matricule) {
         this.tauxHoraire = tauxHoraire;
         this.nom = nom;
         this.prenom = prenom;
