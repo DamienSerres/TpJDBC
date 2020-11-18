@@ -19,7 +19,7 @@ import javax.swing.JOptionPane;
  *
  * @author Damien
  */
-public class CTablePersonnes {
+public class CTableCoordonnees {
 
     CBDD bdd;
 
@@ -57,7 +57,7 @@ public class CTablePersonnes {
                     JOptionPane.showMessageDialog(null, "C'est Vide.");
                 }
             } catch (SQLException ex) {
-                Logger.getLogger(CTablePersonnes.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(CTableCoordonnees.class.getName()).log(Level.SEVERE, null, ex);
             }
             bdd.deconnecter();
         }
@@ -86,7 +86,7 @@ public class CTablePersonnes {
                 return collecPersonnes;
 
             } catch (SQLException ex) {
-                Logger.getLogger(CTablePersonnes.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(CTableCoordonnees.class.getName()).log(Level.SEVERE, null, ex);
             }
             bdd.deconnecter();
         }
@@ -121,7 +121,7 @@ public class CTablePersonnes {
     }
 
     public static void main(String[] args) {
-        CTablePersonnes table = new CTablePersonnes();
+        CTableCoordonnees table = new CTableCoordonnees();
         table.bdd = new CBDD(new CParametresStockageBDD("parametresBdd.properties"));
 
 //        CPersonne unePersonne = new CPersonne();

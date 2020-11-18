@@ -13,7 +13,6 @@ import java.util.regex.Pattern;
  */
 public class CPersonnels {
     
-    private int id;
     private float tauxHoraire;
     private String nom;
     private String prenom;
@@ -76,15 +75,6 @@ public class CPersonnels {
     public void setMatricule(String matricule) {
         this.matricule = matricule;
     }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-    
 
     public static void main(String[] args) {
 //        CPersonnels testBoy = new CPersonnels(500, "Serres", "Damien", "s5555555");
